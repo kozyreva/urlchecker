@@ -17,8 +17,9 @@ type checkup struct {
 }
 
 func main() {
-	in := make(chan []byte)
-	out := make(chan checkup)
+	var size = 128
+	in := make(chan []byte, size)
+	out := make(chan checkup, size)
 
 	go reader(in)
 	go processor(in, out)
